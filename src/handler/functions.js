@@ -1,55 +1,69 @@
-const path = require('path');
-const read = require('./read.js');
+const path = require("path");
+const read = require("./read.js");
+const getdata = require("../database/queries/getdata");
 
 const handelHomePage = (request, response) => {
-  response.writeHead(200, { 'content-type': 'text/html' });
+  response.writeHead(200, { "content-type": "text/html" });
 
-  read(path.join(__dirname, '..', '..', 'public', 'index.html'), (err, res) => {
+  read(path.join(__dirname, "..", "..", "public", "index.html"), (err, res) => {
     if (err) {
-      response.writeHead(500, { 'content-type': 'text/html'});
-      response.end('<h1>Sorry, There is a problem</h1>');
+      response.writeHead(500, { "content-type": "text/html" });
+      response.end("<h1>Sorry, There is a problem</h1>");
     } else {
       response.end(res);
     }
   });
 };
 
+const getbooks = (request, response) => {
+  getdata((err, res) => {
+    if (err) {
+      response.writeHead(500, { "content-type": "text/html" });
+      response.end("<h1>Sorry, There is a problem</h1>");
+    } else {
+      response.writeHead(200, { "content-type": "application/json" });
+      let result = JSON.stringify(res);
+      response.end(result);
+    }
+  });
+};
+
 const serverStaticFile = (request, response) => {
   const endponit = request.url;
-  const extention = endponit.split('.')[1];
+  const extention = endponit.split(".")[1];
   const contenttype = {
-    html: 'text/html',
-    css: 'text/css',
-    js: 'application/javascript',
-    jpg: 'image/jpg',
-    png: 'image/png',
-    json: 'application/json',
-    gif: 'image/gif',
+    html: "text/html",
+    css: "text/css",
+    js: "application/javascript",
+    jpg: "image/jpg",
+    png: "image/png",
+    json: "application/json",
+    gif: "image/gif"
   };
   response.writeHead(200, {
-    'content-type': contenttype[extention],
+    "content-type": contenttype[extention]
   });
 
-  read(path.join(__dirname, '..', '..', endponit), (err, res) => {
+  read(path.join(__dirname, "..", "..", endponit), (err, res) => {
     if (err) {
-      response.writeHead(500, { 'content-type': 'text/html'});
-      response.end('<h1>Sorry, There is a problem</h1>');
+      response.writeHead(500, { "content-type": "text/html" });
+      response.end("<h1>Sorry, There is a problem</h1>");
     } else response.end(res);
   });
 };
 
-const handelError = (response) => {
-  response.writeHead(404, { 'content-type': 'text/html' });
-  read(path.join(__dirname, '..', '..', 'public', 'errp.html'), (err, res) => {
+const handelError = response => {
+  response.writeHead(404, { "content-type": "text/html" });
+  read(path.join(__dirname, "..", "..", "public", "errp.html"), (err, res) => {
     if (err) {
       response.end(err.message);
     } else response.end(res);
   });
 };
 
-
 module.exports = {
   handelHomePage,
   serverStaticFile,
   handelError,
+  getbooks,
 };
