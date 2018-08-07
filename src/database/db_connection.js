@@ -7,7 +7,7 @@ if(!process.env.DB_URL) {
     throw new Error('Error in DB_URL');
 }
 
-const params = JSON.parse(process.env.DB_URL);
+const params = url.parse(process.env.DB_URL);
 const [username, password] = params.auth.split(':');
 
 const options = {
