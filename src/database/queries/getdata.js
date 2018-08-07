@@ -5,5 +5,7 @@ const getdata = (cb) => dbconnection.query(sql, (err,res) => {
     if (err) {
         cb(err);
     }
-    cb(null, res);
+    cb(null, res.rows);
 });
+
+module.exports = getdata;
