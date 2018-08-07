@@ -1,6 +1,6 @@
 const path = require("path");
 const read = require("./read.js");
-const getdata = require("../database/queries/getdata");
+const getdata = require("../queries/getdata");
 
 const handelHomePage = (request, response) => {
   response.writeHead(200, { "content-type": "text/html" });
