@@ -24,30 +24,30 @@ _____________________________________________________________________
 ## File structure
 * w6-Mal-library :
   * public:
-    * ``` css ``` .
-        * ``style.css `` .
-        * ``ep.css `` .
-    * ``` js ``` .
-        * ``dom.js `` .
-        * ``fetch.js `` .
-     * ``` index.html ``` .
-     * ``` error.html ``` .
+    * css .
+        * style.css  .
+        * errp.css .
+    * js  .
+        * dom.js  .
+        * fetch.js .
+     * index.html .
+     * error.html .
   * src :
-   * ```Database ``` .
-      * ```queries ``` .
-        * ``getData.js `` .
-        * ``postData.sql `` .
-      * ``db_build.js `` .
-      * ``db_build.sql `` .
-      * ``db_connection.js `` .
-  * ```handler``` .
-      * ``function.js `` .
-      * ``read.js `` .
-    * ``` server.js``` .
-    * ``` router.js ``` .
+   * Database .
+      * queries .
+        * getData.js .
+        * postData.sql .
+      * db_build.js .
+      * db_build.sql .
+      * db_connection.js .
+  * handler .
+      * function.js .
+      * read.js .
+    * server.js` .
+    * router.js .
 
   * test :
-    * ``` test.js``` .
+    * test.js .
 
 
 Done By : Ahmad, Mohannad, Lubna.
