@@ -89,10 +89,11 @@
 .main .overlay .theresults table {
     border-collapse: collapse;
     width: 100%;
+    margin-top: 24px;
 }
 
 .main .overlay .theresults table td, .main .overlay .theresults table th{
-border: 1px solid #ddd;
+    border: 1px solid #ddd;
     padding: 8px;
 }
 

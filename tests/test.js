@@ -51,4 +51,3 @@ tape('Erorr page status code', (t) => {
       t.end();
     });
 });
-  
