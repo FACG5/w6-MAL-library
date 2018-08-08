@@ -23,6 +23,7 @@
   "homepage": "https://github.com/FACG5/w6-MAL-library#readme",
   "devDependencies": {
     "nodemon": "^1.18.3",
+    "supertest": "^3.1.0",
     "tap-spec": "^5.0.0",
     "tape": "^4.9.1"
   }
