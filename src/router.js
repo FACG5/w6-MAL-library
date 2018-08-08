@@ -2,9 +2,10 @@ const {
   handelHomePage,
   serverStaticFile,
   handelError,
-  getbooks
+  getbooks,
+  postdatabooks,
+  deleteBooks
 } = require("./handler/functions.js");
-
 const router = (req, res) => {
   const endponit = req.url;
   if (endponit === "/") {
@@ -13,6 +14,10 @@ const router = (req, res) => {
     serverStaticFile(req, res);
   } else if (endponit == "/getbooks") {
     getbooks(req, res);
+  } else if (endponit == "/insertBooks") {
+    postdatabooks(req, res);
+  } else if (endponit === "/deleteBooks") {
+    deleteBooks(req, res);
   } else {
     handelError(res);
   }
