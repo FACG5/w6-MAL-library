@@ -59,9 +59,6 @@ const postdatabooks = (request, response) => {
               if (err) {
                 response.writeHead(500, 'Content-Type:text/html');
                 response.end('<h1>Sorry, there was a problem add  books</h1>');
-              } else {
-               
-                
               }
             }, bookId, userId);
           }
@@ -77,15 +74,13 @@ const postdatabooks = (request, response) => {
 };
 
 const deleteBooks = (request, response) => {
-
-
-
   let bookId = "";
   request.on('data', function (chunk) {
     bookId += chunk;
   });
 
   request.on("end", () => {
+    console.log(bookId)
     deleteData(bookId, (err, res) => {
       if (err) {
         response.end("<h1>Sorry, There is a problem</h1>");

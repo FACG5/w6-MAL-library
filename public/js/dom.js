@@ -10,6 +10,7 @@ const dele=(arr,id)=>{
 }
 
 
+
 const rendering = arr => {
   const table = document.getElementById("table_book");
   const results = JSON.parse(arr);
@@ -32,19 +33,15 @@ const rendering = arr => {
     const author1 = document.createElement('td');
     author1.innerHTML = arr.author;
     row.appendChild(author1);
-    
-    const someText = document.createElement('td');
-    if(arr.reserved === true) someText.innerHTML = 'true';
-    else someText.innerHTML = 'false';
-    row.appendChild(someText);
 
-    const del = document.createElement("button");
-    del.textContent="DElETE"
-    row.appendChild(del);
+    // const del = document.createElement("button");
+    // del.textContent="DElETE"
+    // row.appendChild(del);
 
-    del.addEventListener("click", (e) =>{      
+
+    // del.addEventListener("click", (e) =>{      
       
-    });
+    // });
     table.appendChild(row);
   });
 };
@@ -52,8 +49,10 @@ const rendering = arr => {
 const insertBooks = (err, data) => {
   if (err) {
     console.log(err);
-  } else {
-    rendering(data);
+  }
+   else {
+
+     rendering(data);
   }
 };
 
