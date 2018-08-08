@@ -1,6 +1,9 @@
 const path = require("path");
 const read = require("./read.js");
-const getdata = require("../queries/getdata");
+const getdata = require("../database/queries/getdata");
+const postdata = require("../database/queries/postData");
+const deleteData = require("../database/queries/delete");
+const queryString = require("querystring");
 
 const handelHomePage = (request, response) => {
   response.writeHead(200, { "content-type": "text/html" });
@@ -27,6 +30,75 @@ const getbooks = (request, response) => {
     }
   });
 };
+
+const postdatabooks = (request, response) => {
+  let data = '';
+  request.on('data', function (chunk) {
+    data += chunk;
+  });
+  request.on('end', () => {
+    const name = queryString.parse(data).name;
+    const description = queryString.parse(data).description;
+    const author = queryString.parse(data).author;
+    const userName = queryString.parse(data).first_name;
+    postdata((err, res) => {
+      if (err) {
+        response.writeHead(500, 'Content-Type:text/html');
+        response.end('<h1>Sorry, there was a problem add  books</h1>');
+      } else {
+        const bookId = res.rows[0].id;
+
+        postdata((err, res) => {
+          if (err) {
+            response.writeHead(500, 'Content-Type:text/html');
+            response.end('<h1>Sorry, there was a problem add  books</h1>');
+          } else {
+            console.log(res.rows);
+            const userId = res.rows[0].id;
+            postdata((err, res) => {
+              if (err) {
+                response.writeHead(500, 'Content-Type:text/html');
+                response.end('<h1>Sorry, there was a problem add  books</h1>');
+              } else {
+               
+                
+              }
+            }, bookId, userId);
+          }
+        }, userName);
+      }
+    }, name, description, author);
+    response.writeHead(200, {
+      "Content-Type": "text/html"
+    });
+
+    handelHomePage(request, response);
+  });
+};
+
+const deleteBooks = (request, response) => {
+
+
+
+  let bookId = "";
+  request.on('data', function (chunk) {
+    bookId += chunk;
+  });
+
+  request.on("end", () => {
+    deleteData(bookId, (err, res) => {
+      if (err) {
+        response.end("<h1>Sorry, There is a problem</h1>");
+      } else {
+        response.writeHead(200, { "content-type": "application/json" });
+        let result = JSON.stringify(res);
+        response.end(result);
+      }
+    })
+
+  })
+
+}
 
 const serverStaticFile = (request, response) => {
   const endponit = request.url;
@@ -66,4 +138,6 @@ module.exports = {
   serverStaticFile,
   handelError,
   getbooks,
+  postdatabooks,
+  deleteBooks
 };
