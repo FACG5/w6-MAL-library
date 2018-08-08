@@ -1,16 +1,3 @@
-const dele=(arr,id)=>{
-  console.log(arr.id);
-  console.log(arr);
-  return arr.filter((x) => {
-    console.log(arr.id);
-    console.log(arr);
-    if(x.id !== id)
-    return x;
-  })
-}
-
-
-
 const rendering = arr => {
   const table = document.getElementById("table_book");
   const results = JSON.parse(arr);
@@ -33,15 +20,6 @@ const rendering = arr => {
     const author1 = document.createElement('td');
     author1.innerHTML = arr.author;
     row.appendChild(author1);
-
-    // const del = document.createElement("button");
-    // del.textContent="DElETE"
-    // row.appendChild(del);
-
-
-    // del.addEventListener("click", (e) =>{      
-      
-    // });
     table.appendChild(row);
   });
 };
