@@ -2,7 +2,7 @@ const path = require("path");
 const read = require("./read.js");
 const getdata = require("../database/queries/getdata");
 const postdata = require("../database/queries/postData");
-const deleteData = require("../database/queries/delete");
+const { deleteData, deleteDatauser, deleteDatabookuser } = require("../database/queries/delete");
 const queryString = require("querystring");
 
 const handelHomePage = (request, response) => {
@@ -58,9 +58,12 @@ const postdatabooks = (request, response) => {
             postdata((err, res) => {
               if (err) {
                 response.writeHead(500, 'Content-Type:text/html');
-                response.end('<h1>Sorry, there was a problem add  books</h1>');
-              } else {
-               
+                response.end('<h1>Sorry, there was a problem add books</h1>');
+              }else{
+                response.writeHead(302, {
+                  "Location": "/"
+                });
+                response.end();
                 
               }
             }, bookId, userId);
@@ -68,31 +71,59 @@ const postdatabooks = (request, response) => {
         }, userName);
       }
     }, name, description, author);
-    response.writeHead(200, {
-      "Content-Type": "text/html"
-    });
-
-    handelHomePage(request, response);
   });
 };
 
 const deleteBooks = (request, response) => {
-
-
-
-  let bookId = "";
+  // console.log(request,"request")
+  console.log(111);
+  
+  let idbook = '';
   request.on('data', function (chunk) {
-    bookId += chunk;
+    console.log(chunk);
+    
+    idbook += chunk;
+    console.log(idbook,"jijjjjk")
   });
 
   request.on("end", () => {
-    deleteData(bookId, (err, res) => {
+    
+    console.log(idbook);
+    
+    deleteData(idbook, (err, res) => {
+      console.log('id', idbook)
       if (err) {
         response.end("<h1>Sorry, There is a problem</h1>");
       } else {
+        // console.log(res);
+        console.log("sssss");
         response.writeHead(200, { "content-type": "application/json" });
         let result = JSON.stringify(res);
-        response.end(result);
+        // console.log(result);
+        
+        response.end(result, 'SUCESS');
+        // const bookId = res.rows[0].id;
+        // deleteDatauser(bookId, (err, res) => {
+        //   if (err) {
+        //     response.end("<h1>Sorry, There is a problem</h1>");
+        //   } else {
+        //     response.writeHead(200, { "content-type": "application/json" });
+        //     let result = JSON.stringify(res);
+        //     response.end(result);
+        //     const userId = res.rows[0].id;
+            
+        //     deleteDatabookuser(userId, (err, res) => {
+        //       if (err) {
+        //         response.end("<h1>Sorry, There is a problem</h1>");
+        //       } else {
+        //         response.writeHead(200, { "content-type": "application/json" });
+        //         let result = JSON.stringify(res);
+        //         response.end(result);
+        //       }
+        //     })
+        //   }
+        // })
+
       }
     })
 

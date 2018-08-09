@@ -5,7 +5,7 @@ function fetchdata(method,url,data, cb) {
       if (xhr.readyState === 4 && xhr.status === 200) {
           cb(null, xhr.responseText);
       } else {
-          cb("error" + xhr.responseType);
+        //   cb("error" + xhr.responseType);
       }
   };
   xhr.open(method, url, true);

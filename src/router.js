@@ -14,7 +14,7 @@ const router = (req, res) => {
     serverStaticFile(req, res);
   } else if (endponit == "/getbooks") {
     getbooks(req, res);
-  } else if (endponit == "/insertBooks") {
+  } else if (endponit === "/insertBooks" && req.method === 'POST') {
     postdatabooks(req, res);
   } else if (endponit === "/deleteBooks") {
     deleteBooks(req, res);
