@@ -54,8 +54,8 @@ const postdatabooks = (request, response) => {
               response.writeHead(500, "Content-Type:text/html");
               response.end("<h1>Sorry, there was a problem add  books</h1>");
             } else {
-              console.log(res.rows);
-              const userId = res.rows[0].id;
+          
+            const userId = res.rows[0].id;
               postdata(
                 (err, res) => {
                   if (err) {
