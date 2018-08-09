@@ -36,6 +36,7 @@
             console.log(err);
           }
         });
+        table.removeChild(row);
       });
       table.appendChild(row);
     });
