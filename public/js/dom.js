@@ -6,7 +6,7 @@
     results.forEach(arr => {
       console.log(arr)
       const row = document.createElement("tr");
-    const first_name = document.createElement("td");
+   const first_name = document.createElement("td");
     first_name.innerHTML = arr.first_name;
     row.appendChild(first_name);
     

@@ -1,0 +1,104 @@
+* {
+    padding: 0;
+    margin: 0;
+    color: #FFF;
+    font-family: 'Cairo', sans-serif;
+}
+
+.container {
+    margin: 0 auto;
+    width: 75%;
+}
+
+.main {
+    background: url(../../public/img/bg.jpg);
+    background-size: cover;
+    min-height: 700px;
+}
+
+.main .overlay {
+    min-height: 700px;
+    background: rgba(0,0,0,0.8);
+    text-align: center;
+    padding-top: 50px;
+    overflow: hidden;
+}
+
+.main .overlay h1 {
+    margin-bottom: 70px;
+    border-bottom: 1px solid;
+    letter-spacing: 3px;
+    font-size: 32px;
+}
+
+.main .overlay .inputs {
+    float: left;
+    width: 50%;
+}
+
+.main .overlay .inputs input {
+    display: block;
+    margin: 26px 0;
+    width: 400px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 4px 20px 4px 40px;
+    -webkit-transition: 0.4s ease-in-out;
+    transition: 0.4s ease-in-out;
+    font-weight: bold;
+    color: #000;
+}
+
+
+.main .overlay .inputs button {
+    display: block;
+    margin: 26px 0;
+    width: 400px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 4px 20px 4px 40px;
+    -webkit-transition: 0.4s ease-in-out;
+    transition: 0.4s ease-in-out;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+}
+
+.main .overlay .inputs button:hover {
+    background: #848484;
+    border: 2px solid #696868;
+    color: #FFF;
+    box-shadow: 1px 6px 16px 0px #000;
+  }
+
+.main .overlay .theresults {
+    float: right;
+    width: 50%;
+}
+
+.main .overlay .theresults table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 24px;
+}
+
+.main .overlay .theresults table td, .main .overlay .theresults table th{
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.main .overlay .theresults table th {
+    
+    background-color: #848484;;
+    
+}

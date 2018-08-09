@@ -65,7 +65,7 @@ const postdatabooks = (request, response) => {
                 });
                 response.end();
                 
-              }
+             }
             }, bookId, userId);
           }
         }, userName);
@@ -75,8 +75,6 @@ const postdatabooks = (request, response) => {
 };
 
 const deleteBooks = (request, response) => {
-  // console.log(request,"request")
-  console.log(111);
   
   let idbook = '';
   request.on('data', function (chunk) {
